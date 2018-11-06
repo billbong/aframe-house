@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A-Frame</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene background="color: #ECECEC">
+      <!-- ASSETS -->
+      <a-assets>
+        <audio src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay
+              preload></audio>
+
+        <!-- URL: https://free3d.com/3d-model/simple-3d-house-18462.html -->
+        <a-asset-item id="house" src="house.obj"></a-asset-item>
+      </a-assets>
+
+      <a-entity position="3.7 0 0">
+        <a-obj-model src="house.obj" scale="0.013 0.013 0.013"  material="roughness: 0.7"></a-obj-model>
+        <a-entity position="-6.853 1.083 -0.7">  <!-- Grandparent entity -->
+          <a-animation attribute="rotation" begin="click" dur="2000" to="0 80 0">
+          </a-animation>
+          <a-entity position="0 0 -0.65">
+            <a-box position="0 0 0" scale="0.11 2.07 1.06"></a-box>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+
+
+      <a-text value="Look at the door to open" color="#000"
+        position="-2 2 -3" scale="1.5 1.5 1.5"></a-text>
+
+      <!-- Lights -->
+      <a-light type="point" intensity="0.3" position="3 2 1"></a-light>
+
+      <!-- ENVIRONMENT-->
+      <a-entity environment="preset: yavapai; dressingAmount: 15; lightPosition:-1 4 -2"></a-entity>
+
+      <!-- CAMERAS -->
+      <a-camera id="cursor">
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+  </body>
+</html>
